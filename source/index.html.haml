@@ -9,12 +9,17 @@
     %section.intro
       %p
         Hello!
-        For now this is just an introduction to Flo’s signs but we want to build it up into a dictionary where you can also look them up and post questions.
-        She uses Signalong, mostly, with some Makaton from Mr Tumble and a few variations of her own.
-        Her signs can be hard to spot or tell apart, so we hope these little videos will help.
+        To start with this is just an introduction to Flo’s signs but we mean to build it up into a dictionary where you can also look them up and post questions.
+      .mobile
+        %p
+          %strong
+            For best viewing please turn your phone sideways.
+      %p
+        Flo uses Signalong, mostly, with some Makaton from Mr Tumble and a few variations of her own.
+        Her signs are sometimes hard to distinguish, so we hope these little videos will help.
       .nomobile
         %p
-          Only the videos on the right are working now; the search is coming soon and more guides will follow.
+          Only the clips on the right are working today; the search is coming soon and more guides will follow.
 
     .nomobile
       %section.search.notyet
@@ -42,6 +47,11 @@
         Thanks for visiting,
         %br
         Will and Sue
+      %p
+        ps.
+        Any questions, please write to
+        = mail_to "will@spanner.org"
+        or call 869053.
 
 
   %aside.guides
@@ -50,7 +60,7 @@
         %a{href: "{{href}}"}
           %span.thumbnail{style: "background-image: url({{thumbnail}})"}>
             %svg.playable
-              %use{href: "#playable_symbol"}
+              %use{"xlink:href" => "#playable_symbol"}
           %span.label>
             %span.title>
               {{title}}
@@ -64,4 +74,4 @@
       %h3
       %a.close
         %svg.icon
-          %use{href: "#x_symbol"}
+          %use{"xlink:href" => "#x_symbol"}
