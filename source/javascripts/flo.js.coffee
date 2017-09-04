@@ -1,27 +1,50 @@
 #= require 'mustache/mustache'
 
 $ ->
-  $.fn.load_playlist = ->
+  $.fn.plays_video = (opts={}) ->
+    $player = $('#player')
+    $mask = $('#mask')
+    console.log "plays video", @, opts
+    @click (e) ->
+      e.preventDefault()
+      $player.find('iframe').attr 'src', opts.url
+      $player.find('h3').text opts.title
+      $player.addClass('visible')
+      $mask.addClass('visible')
+
+  $.fn.hides_player = ->
+    @click ->
+      $('#player').removeClass('visible')
+      $('#mask').removeClass('visible')
+
+  $.fn.loads_playlist = ->
     @each ->
       $el = $(@)
       pid = $el.data('playlist')
       tpl = $el.html()
       $el.empty()
-      loader = $.get "https://www.googleapis.com/youtube/v3/playlistItems",
+      loader = $.getJSON "https://www.googleapis.com/youtube/v3/playlistItems",
         playlistId: pid
         part: "contentDetails,snippet"
         key: "AIzaSyAiWUKjTrbJXaRW1ML-whzE4uKDzrnFLEE"
         maxResults: 10
       loader.done (data) =>
-        # perhaps we should keep this old-school
         for item in data.items
-          console.log "got video", item.snippet.title
+          video_id = item.contentDetails.videoId
+          video_title = item.snippet.title
           li = Mustache.render tpl,
-            title: item.snippet.title.replace('Flo Show episode', 'Episode')
+            title: video_title.replace('Flo Show episode', 'Episode')
             description: item.snippet.description
             thumbnail: item.snippet.thumbnails.medium.url
-            id: item.contentDetails.videoId
-          $el.append li
+            id: video_id
+            href: "https://youtu.be/#{video_id}"
+          $li = $(li).appendTo $el
+          $li.find('a').plays_video
+            title: video_title
+            url: "https://www.youtube.com/embed/#{video_id}?rel=0"
 
-  
-  $('[data-playlist]').load_playlist()
+
+
+  $('[data-playlist]').loads_playlist()
+  $('a.close').hides_player()
+  $('#mask').hides_player()
