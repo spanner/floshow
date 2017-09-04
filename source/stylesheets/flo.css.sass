@@ -1,0 +1,161 @@
+/*@import fonts.css*/
+
+$bg: #F5D573
+$link: #f57973
+$hover: #f57973
+$text: #4d4e56
+$pale: #ae9b65
+
+*
+  box-sizing: border-box
+
+body, html
+  height: 100%
+  margin: 0
+
+#svg_holder
+  position: absolute
+  display: none
+
+svg
+  fill: currentColor
+
+// defaults
+
+body 
+  font-family: "Aller", "HelveticaNeue", Helvetica, Arial, sans-serif
+  line-height: 1.6
+  background-color: $bg
+  color: $text
+
+h1, h2 
+  font-family: "Novecento", "HelveticaNeue", Helvetica, Arial, sans-serif
+
+h3, h4
+  font-family: "Aller", "HelveticaNeue", Helvetica, Arial, sans-serif
+
+h1
+  line-height: 1.1
+
+a
+  color: $link
+  text-decoration: none
+  &:hover
+    color: $hover
+  
+// construction
+
+.wrapper
+  position: relative
+  width: 90%
+  max-width: 960px
+  overflow: visible
+  margin: 0 auto
+
+.masthead
+  position: relative
+  width: 100%
+  margin-top: 5vh auto
+  h1
+    font-size: 3em
+    font-weight: lighter
+    line-height: 1
+    margin: 0
+    padding: 60px 0 20px 0
+
+.main
+  position: relative
+  width: 56%
+  font-size: 120%
+  section
+    position: relative
+    margin: 1em 0
+    h2
+      margin-bottom: 0
+    p
+      margin-top: 0
+  section.notyet
+    color: $pale
+    form
+      input
+        opacity: 0.5
+  section.thanks
+    margin-bottom: 10vh
+
+.guides
+  position: absolute
+  width: 36%
+  top: 0
+  right: 0
+  ul
+    margin: 0.25em 0 0 0
+    padding: 0
+    font-size: 1rem
+    list-style: none
+    li
+      margin-bottom: 1.5em
+      a
+        color: $text
+        &:hover
+          span.thumbnail
+            svg.playable
+              opacity: 0.9
+              color: $link
+      span.thumbnail
+        position: relative
+        display: inline-block
+        vertical-align: top
+        width: 80px
+        height: 45px
+        margin-top: 2px
+        border-radius: 3px
+        background:
+          position: center center
+          repeat: no-repeat
+          size: cover
+          color: $pale
+        svg.playable
+          display: block
+          position: absolute
+          width: 16px
+          height: 16px
+          top: 5px
+          right: 5px
+          color: $link
+          opacity: 0.85
+      span.label
+        display: inline-block
+        vertical-align: top
+        width: calc(100% - 100px)
+        margin-left: 8px
+        span.title
+          white-space: nowrap
+          font-size: 1.15rem
+          font-weight: lighter
+        span.note
+          display: block
+          font-size: 0.9rem
+          color: $pale
+          white-space: nowrap
+          overflow: hidden
+          text-overflow: ellipsis
+          margin-top: -2px
+
+form
+  input
+    display: inline-block
+    vertical-align: top
+    padding: 5px
+    height: 44px
+    font-size: 1.2rem
+    border: 1px solid $pale
+    box-sizing: border-box
+    outline: none
+    border-radius: 3px
+    margin-right: 3%
+    &.twothirds
+      width: 63%
+    &.third
+      width: 30%
+    &:last-child
+      margin-right: 0

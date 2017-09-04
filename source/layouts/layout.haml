@@ -1,0 +1,22 @@
+!!!
+
+%html
+  %head
+    %title
+      The Flo Show
+    = stylesheet_link_tag "flo.css"
+    %link{rel: "icon", sizes: "16x16", type: "image/png", href: "/images/favicon-16.png"}
+    %link{rel: "icon", sizes: "32x32", type: "image/png", href: "/images/favicon-32.png"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    %meta{"http-equiv" => 'content-type', content: 'text/html; charset=utf-8'}
+
+  %body
+    #svg_holder
+      %svg{xmlns: "http://www.w3.org/2000/svg", style: "display: none;"}
+        %symbol#playable_symbol{viewBox: "0 0 100 100"}
+          %path{d: "m50 3.8008c-25.5 0-46.199 20.699-46.199 46.199s20.699 46.199 46.199 46.199 46.199-20.699 46.199-46.199-20.699-46.199-46.199-46.199zm21.199 49.5l-30.801 18c-0.60156 0.39844-1.3008 0.5-1.8984 0.5-0.60156 0-1.3008-0.10156-1.8984-0.5-1.1992-0.60156-1.8984-1.8984-1.8984-3.3008l-0.003906-36c0-1.3984 0.80078-2.6992 1.8984-3.3008 1.1992-0.60156 2.6992-0.60156 3.8008 0l30.801 18c1.1992 0.60156 1.8984 1.8984 1.8984 3.3008 0.003906 1.3984-0.79688 2.6992-1.8984 3.3008z"}
+
+    = yield
+
+    = javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"
+    = javascript_include_tag "flo.js"

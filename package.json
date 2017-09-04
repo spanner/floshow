@@ -1,0 +1,13 @@
+{
+  "name": "flo.show",
+  "version": "0.1.0",
+  "description": "It's the Flo Show",
+  "main": "index.html",
+  "repository": "github.com/spanner/floshow",
+  "author": "William Ross",
+  "license": "MIT",
+  "dependencies": {
+    "mustache": "^2.3.0",
+    "slick-carousel": "^1.7.1"
+  }
+}

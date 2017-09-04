@@ -1,0 +1,58 @@
+.wrapper
+  %header.masthead
+    #title
+      %h1 
+        flo.show
+
+.wrapper
+  %main.main
+    %section.intro
+      %p
+        Hello!
+        This is an introduction to Flo’s signs that we hope to turn into a sort of dictionary where you can also look them up.
+        She uses Signalong, mostly, with some Makaton from Mr Tumble and a few variations of her own.
+        Her signs can be hard to spot or tell apart, so we hope these little videos will help.
+      %p
+        Only the guides on the right are working now; the search is coming soon and more guides will follow.
+
+    %section.search.notyet
+      %h2
+        Find a sign
+      %p
+        Begin a word here and we'll show relevant suggestions from Flo's 150-200 signs.
+      %form.search<
+        %input.twothirds{type: "text", name: "q", placeholder: "word or situation", disabled: true}>
+        %input.third{type: "submit", disabled: true, value: "search"}>
+
+    %section.query.notyet
+      %h2
+        Check a sign
+      %p
+        If Flo is using a sign you don’t recognise, take a short video and upload it here. We don’t always know either but we’ll try to work it out.
+
+      %form.query<
+        %input.third{type: "text", name: "name", placeholder: "Your name", disabled: true}>
+        %input.third{type: "text", name: "email", placeholder: "email", disabled: true}>
+        %input.third{type: "submit", disabled: true, value: "video"}>
+
+    %section.thanks
+      %p
+        Thanks for visiting,
+        %br
+        Will and Sue
+
+
+
+
+  %aside.guides
+    %ul.videos{data: {playlist: "PL8snXwA64AXM-CmZLnbKoAOmWiRwuQ0ZC"}}
+      %li.video<
+        %a{href: "{{href}}"}
+          %span.thumbnail{style: "background-image: url({{thumbnail}})"}>
+            %svg.playable
+              %use{href: "#playable_symbol"}
+          %span.label>
+            %span.title>
+              {{title}}
+            %span.note
+              {{description}}
