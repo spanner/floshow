@@ -4,17 +4,20 @@ $ ->
   $.fn.plays_video = (opts={}) ->
     $player = $('#player')
     $mask = $('#mask')
-    console.log "plays video", @, opts
     @click (e) ->
       e.preventDefault()
-      $player.find('iframe').attr 'src', opts.url
-      $player.find('h3').text opts.title
-      $player.addClass('visible')
+      iframe = $player.find('iframe')[0]
+      if iframe.src is opts.url
+        iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*')
+      else
+        iframe.src = opts.url
+        $player.find('h3').text opts.title
       $mask.addClass('visible')
 
   $.fn.hides_player = ->
     @click ->
-      $('#player').removeClass('visible')
+      if iframe = $('#player').find('iframe')[0]
+        iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*')
       $('#mask').removeClass('visible')
 
   $.fn.loads_playlist = ->
@@ -41,7 +44,7 @@ $ ->
           $li = $(li).appendTo $el
           $li.find('a').plays_video
             title: video_title
-            url: "https://www.youtube.com/embed/#{video_id}?rel=0"
+            url: "https://www.youtube.com/embed/#{video_id}?version=3&enablejsapi=1&autoplay=true"
 
 
 
